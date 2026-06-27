@@ -1,22 +1,22 @@
 /* =========================================================
    Perspectives — Purvi Banker Parikh
-   Design system
-   Palette : warm paper, deep pine, sparing brass, ink
-   Type    : Fraunces (display) · Newsreader (reading) · Inter (utility)
+   Design system — "Private Review"
+   Palette : warm ivory, oxblood accent, ink
+   Type    : Fraunces (display) · Newsreader (reading) · Libre Franklin (utility)
    ========================================================= */
 
 :root{
-  --paper:    #F8F7F3;
-  --paper-2:  #F2F0EA;   /* faint panel */
-  --ink:      #1C1C1A;
-  --pine:     #1B3A34;   /* deep evergreen — the long game */
-  --brass:    #A6863C;   /* a seal, used sparingly */
-  --muted:    #6E6B62;
-  --line:     #E4E1D9;
+  --paper:    #F6F2E9;   /* warm ivory */
+  --paper-2:  #EFE9DC;   /* faint panel */
+  --ink:      #1C1B18;
+  --pine:     #7A2E3A;   /* oxblood — the single jewel accent */
+  --brass:    #9A3A48;   /* lighter oxblood — markers, hover */
+  --muted:    #6E665A;   /* warm taupe */
+  --line:     #E2DCCE;   /* warm hairline */
 
   --display: "Fraunces", Georgia, "Times New Roman", serif;
   --body:    "Newsreader", Georgia, serif;
-  --ui:      "Inter", system-ui, -apple-system, sans-serif;
+  --ui:      "Libre Franklin", system-ui, -apple-system, sans-serif;
 
   --measure: 39rem;       /* reading column */
   --wide:    66rem;       /* page container  */
