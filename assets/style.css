@@ -1,0 +1,265 @@
+/* =========================================================
+   Perspectives — Purvi Banker Parikh
+   Design system
+   Palette : warm paper, deep pine, sparing brass, ink
+   Type    : Fraunces (display) · Newsreader (reading) · Inter (utility)
+   ========================================================= */
+
+:root{
+  --paper:    #F8F7F3;
+  --paper-2:  #F2F0EA;   /* faint panel */
+  --ink:      #1C1C1A;
+  --pine:     #1B3A34;   /* deep evergreen — the long game */
+  --brass:    #A6863C;   /* a seal, used sparingly */
+  --muted:    #6E6B62;
+  --line:     #E4E1D9;
+
+  --display: "Fraunces", Georgia, "Times New Roman", serif;
+  --body:    "Newsreader", Georgia, serif;
+  --ui:      "Inter", system-ui, -apple-system, sans-serif;
+
+  --measure: 39rem;       /* reading column */
+  --wide:    66rem;       /* page container  */
+  --pad:     clamp(1.4rem, 5vw, 3rem);
+}
+
+*{ box-sizing:border-box; }
+
+html{ -webkit-text-size-adjust:100%; }
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:clamp(1.06rem, 0.6vw + 1rem, 1.2rem);
+  line-height:1.72;
+  font-weight:380;
+  text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ---- shared layout ---- */
+.wrap{ width:100%; max-width:var(--wide); margin-inline:auto; padding-inline:var(--pad); }
+.read{ max-width:var(--measure); }
+
+a{ color:var(--pine); text-underline-offset:3px; text-decoration-thickness:1px; }
+a:hover{ color:var(--brass); }
+
+::selection{ background:var(--pine); color:var(--paper); }
+
+:focus-visible{ outline:2px solid var(--pine); outline-offset:3px; border-radius:2px; }
+
+/* ---- eyebrow / labels ---- */
+.eyebrow{
+  font-family:var(--ui);
+  font-size:.72rem;
+  font-weight:560;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+/* =========================================================
+   Masthead
+   ========================================================= */
+.masthead{
+  border-bottom:1px solid var(--line);
+}
+.masthead__inner{
+  display:flex; align-items:baseline; justify-content:space-between;
+  gap:1.5rem; flex-wrap:wrap;
+  padding-block:1.35rem;
+}
+.brand{
+  font-family:var(--display);
+  font-optical-sizing:auto;
+  font-weight:500;
+  font-size:1.18rem;
+  letter-spacing:.005em;
+  color:var(--ink);
+  text-decoration:none;
+  white-space:nowrap;
+}
+.brand:hover{ color:var(--ink); }
+.brand .mark{ color:var(--brass); font-style:italic; }
+.nav{
+  display:flex; gap:1.6rem;
+  font-family:var(--ui); font-size:.82rem; letter-spacing:.04em;
+}
+.nav a{ color:var(--muted); text-decoration:none; }
+.nav a:hover, .nav a[aria-current="page"]{ color:var(--pine); }
+
+/* =========================================================
+   Hero
+   ========================================================= */
+.hero{ padding-top:clamp(3.2rem,9vw,6rem); padding-bottom:clamp(2.6rem,6vw,4.4rem); }
+.hero .eyebrow{ display:block; margin-bottom:1.7rem; }
+
+.hero h1{
+  font-family:var(--display);
+  font-optical-sizing:auto;
+  font-weight:430;
+  font-size:clamp(2.5rem, 6.2vw, 4.4rem);
+  line-height:1.03;
+  letter-spacing:-.012em;
+  margin:0 0 1.8rem;
+  max-width:16ch;
+}
+
+/* three-seats triptych — the signature */
+.seats{ list-style:none; margin:0 0 2.1rem; padding:0; max-width:var(--measure); }
+.seats li{
+  font-family:var(--body);
+  font-style:italic;
+  font-size:clamp(1.15rem,1.4vw,1.4rem);
+  line-height:1.5;
+  color:var(--ink);
+  padding-left:2.1rem;
+  position:relative;
+}
+.seats li + li{ margin-top:.35rem; }
+.seats li::before{
+  content:"";
+  position:absolute; left:0; top:.78em;
+  width:1.4rem; height:2px;
+  background:var(--brass);
+}
+.hero__dek{
+  max-width:34rem;
+  color:var(--muted);
+  font-size:1.06rem;
+  line-height:1.66;
+  margin:0;
+}
+
+/* =========================================================
+   Section heads
+   ========================================================= */
+.rule{ border:0; border-top:1px solid var(--line); margin:0; }
+
+.sec{ padding-block:clamp(2.8rem,6vw,4.4rem); }
+.sec__head{ display:flex; align-items:baseline; gap:1rem; margin-bottom:2.2rem; }
+.sec__head .eyebrow{ flex:none; }
+.sec__head .line{ flex:1; height:1px; background:var(--line); transform:translateY(-.2em); }
+
+/* =========================================================
+   Perspectives list
+   ========================================================= */
+.piece{
+  display:block;
+  text-decoration:none;
+  color:inherit;
+  padding-block:1.7rem;
+  border-top:1px solid var(--line);
+  transition:padding-left .35s cubic-bezier(.2,.7,.2,1);
+}
+.piece:first-of-type{ border-top:0; }
+.piece:hover{ padding-left:.5rem; }
+.piece:hover .piece__title{ color:var(--pine); }
+.piece__meta{
+  font-family:var(--ui); font-size:.74rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--muted); margin-bottom:.55rem;
+}
+.piece__title{
+  font-family:var(--display); font-optical-sizing:auto;
+  font-weight:450; font-size:clamp(1.5rem,2.6vw,2rem);
+  line-height:1.12; letter-spacing:-.01em; margin:0 0 .55rem;
+  transition:color .25s ease;
+}
+.piece__dek{ color:var(--muted); margin:0; max-width:46rem; font-size:1.02rem; }
+
+/* small "about" teaser */
+.teaser p{ max-width:42rem; font-size:1.12rem; }
+.more{
+  font-family:var(--ui); font-size:.82rem; letter-spacing:.04em;
+  text-decoration:none; color:var(--pine); display:inline-block; margin-top:.6rem;
+}
+.more:hover{ color:var(--brass); }
+.more::after{ content:" \2192"; }
+
+/* =========================================================
+   Article (essay + about)
+   ========================================================= */
+.article{ padding-top:clamp(2.6rem,6vw,4.2rem); padding-bottom:clamp(3rem,7vw,5rem); }
+.article__kicker{ display:block; margin-bottom:1.4rem; }
+.article h1{
+  font-family:var(--display); font-optical-sizing:auto;
+  font-weight:440; font-size:clamp(2.1rem,4.6vw,3.3rem);
+  line-height:1.07; letter-spacing:-.012em; margin:0 0 1.1rem; max-width:18ch;
+}
+.article__meta{
+  font-family:var(--ui); font-size:.76rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--muted); margin-bottom:2.6rem;
+}
+.prose{ max-width:var(--measure); }
+.prose p{ margin:0 0 1.35rem; }
+.prose > p:first-of-type::first-letter{
+  font-family:var(--display); font-weight:500;
+  float:left; font-size:3.4rem; line-height:.82;
+  padding:.34rem .14em 0 0; color:var(--pine);
+}
+.prose h2{
+  font-family:var(--display); font-weight:480; font-size:1.5rem;
+  letter-spacing:-.01em; line-height:1.2; margin:2.6rem 0 1rem;
+}
+.prose em{ font-style:italic; }
+.prose strong{ font-weight:600; }
+.prose a{ color:var(--pine); }
+
+/* labelled vantage paragraphs on About */
+.vantage{ position:relative; padding-left:0; }
+.vantage .tag{
+  font-family:var(--ui); font-size:.7rem; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--brass); display:block; margin-bottom:.35rem;
+}
+
+.endnote{
+  margin-top:2.8rem; padding-top:1.7rem; border-top:1px solid var(--line);
+  max-width:var(--measure); color:var(--muted); font-size:1rem; line-height:1.65;
+}
+.endnote em{ color:var(--ink); }
+
+.backlink{
+  font-family:var(--ui); font-size:.8rem; letter-spacing:.04em;
+  text-decoration:none; color:var(--muted); display:inline-block; margin-bottom:2.4rem;
+}
+.backlink:hover{ color:var(--pine); }
+.backlink::before{ content:"\2190 \00a0"; }
+
+/* =========================================================
+   Footer
+   ========================================================= */
+.foot{ border-top:1px solid var(--line); padding-block:2.6rem 3.4rem; margin-top:1rem; }
+.foot__grid{ display:flex; justify-content:space-between; gap:2rem; flex-wrap:wrap; align-items:flex-start; }
+.foot__name{ font-family:var(--display); font-weight:500; font-size:1.05rem; }
+.foot__creds{
+  font-family:var(--ui); font-size:.74rem; letter-spacing:.06em; color:var(--muted);
+  margin-top:.45rem; line-height:1.9;
+}
+.foot__right{ font-family:var(--ui); font-size:.8rem; color:var(--muted); text-align:right; }
+.foot__right a{ color:var(--pine); text-decoration:none; }
+.foot__right a:hover{ color:var(--brass); }
+.foot__note{ margin-top:.5rem; color:var(--muted); }
+
+/* =========================================================
+   Motion — gentle, optional
+   ========================================================= */
+@media (prefers-reduced-motion:no-preference){
+  .rise{ opacity:0; transform:translateY(14px); animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards; }
+  .rise.d1{ animation-delay:.06s; }
+  .rise.d2{ animation-delay:.16s; }
+  .rise.d3{ animation-delay:.26s; }
+  .rise.d4{ animation-delay:.36s; }
+  @keyframes rise{ to{ opacity:1; transform:none; } }
+}
+
+/* =========================================================
+   Responsive
+   ========================================================= */
+@media (max-width:540px){
+  .masthead__inner{ flex-direction:column; gap:.55rem; align-items:flex-start; }
+  .nav{ gap:1.2rem; }
+  .foot__right{ text-align:left; }
+  .prose > p:first-of-type::first-letter{ font-size:2.9rem; }
+}
